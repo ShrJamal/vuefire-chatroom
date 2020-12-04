@@ -1,38 +1,57 @@
 <template>
-  <form class="auth login" :action="onSubmit">
+  <Form
+    class="auth login"
+    @submit="onSubmit"
+    :validation-schema="schema"
+    v-slot="{ errors }"
+  >
     <h1>Welcome</h1>
-    <input type="email" required placeholder="Email" v-model="form.email" />
-    <input
-      type="password"
-      required
-      placeholder="Password"
-      v-model="form.password"
+    <Field
+      v-model="form.email"
+      as="input"
+      rules="required|email"
+      name="email"
+      type="email"
+      placeholder="Email"
     />
+    <span class="error">{{ errors.email }}</span>
+
+    <Field
+      v-model="form.password"
+      as="input"
+      rules="required|min:7"
+      name="password"
+      type="password"
+      placeholder="Password"
+    />
+    <span class="error">{{ errors.password }}</span>
+
     <h4 class="error">{{ error }}</h4>
 
-    <button @click.prevent="onSubmit">
+    <button>
       {{ isLoading ? 'Loading...' : 'Login' }}
     </button>
-  </form>
+    <!-- <pre>{{ vv }}</pre> -->
+  </Form>
 </template>
 
 <script lang="ts">
 import { defineComponent, reactive, computed } from 'vue'
 import { useLoginStore } from '@/store/auth/login.ts'
-import { LoginForm } from '@/@types/auth'
 import { useAuthStore } from '@/store/auth'
+import { Field, Form } from 'vee-validate'
+import { LoginForm } from '@/@types/auth'
+import * as yup from 'yup'
 
 export default defineComponent({
+  components: { Field, Form },
   setup() {
     const loginStore = useLoginStore()
-    const form = reactive<LoginForm>({
-      email: '',
-      password: '',
-    })
+    const form = reactive<LoginForm>({ email: '', password: '' })
+
     const isLoading = computed(() => useAuthStore().isLoading)
-    function onSubmit(e: Event) {
+    function onSubmit() {
       if (isLoading.value) return
-      e.preventDefault()
       loginStore.login(form)
     }
 
@@ -41,6 +60,10 @@ export default defineComponent({
       isLoading,
       error: computed(() => loginStore.error),
       onSubmit,
+      schema: {
+        email: yup.string().required().email(),
+        password: yup.string().required().min(8),
+      },
     }
   },
 })
