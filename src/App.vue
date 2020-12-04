@@ -1,30 +1,30 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
-  <router-view />
+  <router-view v-show="store.authInit" />
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script lang="ts">
+import { defineComponent, onUnmounted } from 'vue'
+import { auth } from '@/utils/firebase'
+import type { Unsubscribe } from '@/utils/firebase.ts'
+import { useAuthStore } from '@/store/auth/index'
+import { useRouter } from 'vue-router'
 
-#nav {
-  padding: 30px;
+export default defineComponent({
+  setup() {
+    let unSubscribe: Unsubscribe
+    onUnmounted(() => unSubscribe())
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
-</style>
+    const router = useRouter()
+    const store = useAuthStore()
+    unSubscribe = auth.onAuthStateChanged(async () => {
+      console.log('----onAuthStateChanged ')
+      if (await store.fetchUser()) {
+        router.push({ name: 'Auth' })
+      } else {
+        router.push('/')
+      }
+    })
+    return { store }
+  },
+})
+</script>
