@@ -1,26 +1,31 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
-import Home from "../views/Home.vue";
-
-const routes: Array<RouteRecordRaw> = [
-  {
-    path: "/",
-    name: "Home",
-    component: Home
-  },
-  {
-    path: "/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue")
-  }
-];
-
+import { createRouter, createWebHistory } from 'vue-router'
+import { useAuthStore } from '@/store/auth/index'
+import { pinia } from '../store/index'
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes
-});
+  routes: [
+    {
+      path: '/',
+      name: 'Home',
+      component: () =>
+        import(/* webpackChunkName: "Home" */ '../views/chatroom.vue'),
+    },
+    {
+      path: '/auth',
+      name: 'Auth',
+      component: () =>
+        import(/* webpackChunkName: "Auth" */ '../views/auth.vue'),
+    },
+  ],
+})
 
-export default router;
+router.beforeEach((to, _, next) => {
+  console.log('---BeforeEach', to.name)
+  const authStore = useAuthStore(pinia)
+
+  if (to.name !== 'Auth' && !authStore.user) next({ name: 'Auth' })
+  else if (to.name === 'Auth' && authStore.user) next('/')
+  else next()
+})
+
+export default router
