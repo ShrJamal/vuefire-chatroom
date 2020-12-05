@@ -15,7 +15,18 @@ firebase.initializeApp({
   measurementId: 'G-5QXFB0JBGP',
 })
 
+//--------- Auth -------------------------
 export const auth = firebase.auth()
-export const db = firebase.firestore()
-
 export type Unsubscribe = firebase.Unsubscribe
+
+//--------- Firestore -------------------------
+export type DocSnapshot = firebase.firestore.QueryDocumentSnapshot
+export type DocumentData = firebase.firestore.DocumentData
+export type Timestamp = firebase.firestore.Timestamp
+export type FieldValue = firebase.firestore.FieldValue
+
+export const db = firebase.firestore()
+export const usersCol = db.collection('users')
+export const chatCol = db.collection('chatroom')
+
+//---------------------------------------------
