@@ -41,7 +41,6 @@ export const useAuthStore = defineStore({
     },
 
     async logout() {
-      console.log('----Logout')
       await auth.signOut()
     },
   },

@@ -16,7 +16,6 @@ export default defineComponent({
     const router = useRouter()
     const store = useAuthStore()
     const unSubscribe = auth.onAuthStateChanged(async () => {
-      console.log('----onAuthStateChanged ')
       if (await store.fetchUser()) {
         router.push({ name: 'Auth' })
       } else {

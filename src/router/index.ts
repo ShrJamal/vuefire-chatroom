@@ -20,7 +20,6 @@ const router = createRouter({
 })
 
 router.beforeEach((to, _, next) => {
-  console.log('---BeforeEach', to.name)
   const authStore = useAuthStore(pinia)
 
   if (to.name !== 'Auth' && !authStore.user) next({ name: 'Auth' })

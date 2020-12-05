@@ -14,7 +14,6 @@ export const useChatStore = defineStore({
   actions: {
     chatsStream() {
       return chatCol.orderBy('createdAt', 'desc').onSnapshot((snap) => {
-        console.log('--snap', snap)
         this.chats = snap.docs
           .map((d) => chatMsgfromDoc(d.data()))
           .sort((a, b) => (a.createdAt < b.createdAt ? -1 : 1))
@@ -29,7 +28,7 @@ export const useChatStore = defineStore({
         content: message,
         createdAt: new Date(),
       }
-      // this.chats = [msg, ...this.chats]
+      this.chats = [msg, ...this.chats]
       message = ''
 
       chatCol.doc(msg.id).set(msg)
