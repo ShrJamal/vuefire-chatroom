@@ -1,4 +1,4 @@
-import { RegisterForm } from '@/@types/auth'
+import { RegisterForm } from '@/@types/auth/form'
 import { auth, db } from '@/utils/firebase'
 import { defineStore } from 'pinia'
 import { useAuthStore } from '.'

@@ -47,7 +47,7 @@
 import { defineComponent, reactive, computed } from 'vue'
 import { useRegisterStore } from '@/store/auth/register'
 import { useAuthStore } from '@/store/auth'
-import { RegisterForm } from '@/@types/auth'
+import { RegisterForm } from '@/@types/auth/form'
 import { Field, Form } from 'vee-validate'
 import * as yup from 'yup'
 

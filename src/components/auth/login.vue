@@ -40,7 +40,7 @@ import { defineComponent, reactive, computed } from 'vue'
 import { useLoginStore } from '@/store/auth/login.ts'
 import { useAuthStore } from '@/store/auth'
 import { Field, Form } from 'vee-validate'
-import { LoginForm } from '@/@types/auth'
+import { LoginForm } from '@/@types/auth/form'
 import * as yup from 'yup'
 
 export default defineComponent({

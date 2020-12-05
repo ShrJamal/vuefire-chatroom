@@ -1,4 +1,4 @@
-import User from '@/@types/user'
+import AuthUser from '@/@types/auth/user'
 import { db } from '@/utils/firebase'
 import { defineStore } from 'pinia'
 import { auth } from '../../utils/firebase'
@@ -7,7 +7,7 @@ export const useAuthStore = defineStore({
   id: 'auth',
   state: () => ({
     authInit: false,
-    user: null as User | null,
+    user: null as AuthUser | null,
     isLoading: false,
   }),
   actions: {
