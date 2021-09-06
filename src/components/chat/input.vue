@@ -1,7 +1,20 @@
+<script setup lang="ts">
+import { ref, defineEmits } from 'vue'
+
+const emit = defineEmits(['send'])
+
+const input = ref('')
+function onSend(e: Event) {
+  e.preventDefault()
+  emit('send', input.value)
+  input.value = ''
+}
+</script>
+
 <template>
   <form @keypress.enter.prevent="onSend">
     <textarea
-      v-model="value"
+      v-model="input"
       @submit="onSend"
       name="value"
       placeholder="Type Message..."
@@ -10,24 +23,6 @@
     <button @click.prevent="onSend">Send</button>
   </form>
 </template>
-
-<script lang="ts">
-import { defineComponent } from 'vue'
-
-export default defineComponent({
-  data: () => ({
-    value: '',
-  }),
-  emits: ['send'],
-  methods: {
-    onSend(e: Event) {
-      e.preventDefault()
-      this.$emit('send', this.value)
-      this.value = ''
-    },
-  },
-})
-</script>
 
 <style scoped>
 form {

@@ -1,3 +1,16 @@
+<script setup lang="ts">
+import { ChatMessage } from 'types/chatroom/message'
+import { defineProps } from 'vue'
+import { format } from 'timeago.js'
+
+const { msg } = defineProps({
+  msg: {
+    type: Object as () => ChatMessage,
+    required: true,
+  },
+})
+</script>
+
 <template>
   <div class="msg">
     <h6 class="date">{{ format(msg?.createdAt) }}</h6>
@@ -5,23 +18,6 @@
     <span class="content">{{ msg?.content }}</span>
   </div>
 </template>
-
-<script lang="ts">
-import { ChatMessage } from 'types/chatroom/message'
-import { defineComponent } from 'vue'
-import { format } from 'timeago.js'
-export default defineComponent({
-  props: {
-    msg: {
-      type: Object as () => ChatMessage,
-      required: true,
-    },
-  },
-  setup() {
-    return { format }
-  },
-})
-</script>
 
 <style scoped>
 .msg {

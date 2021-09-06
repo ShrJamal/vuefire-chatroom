@@ -1,3 +1,11 @@
+<script setup lang="ts">
+import { useAuthStore } from 'store/auth'
+
+const authStore = useAuthStore()
+const user = authStore.user!
+const logout = authStore.logout
+</script>
+
 <template>
   <nav>
     <div class="info">
@@ -7,18 +15,6 @@
     <button @click="logout">Logout</button>
   </nav>
 </template>
-
-<script lang="ts">
-import { useAuthStore } from 'store/auth'
-import { defineComponent } from 'vue'
-
-export default defineComponent({
-  setup() {
-    const authStore = useAuthStore()
-    return { user: authStore.user!, logout: authStore.logout }
-  },
-})
-</script>
 
 <style scoped>
 nav {

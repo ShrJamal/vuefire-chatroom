@@ -1,3 +1,27 @@
+<script setup lang="ts">
+import { reactive, computed } from 'vue'
+import { useLoginStore } from 'store/auth/login'
+import { useAuthStore } from 'store/auth'
+import { Field, Form } from 'vee-validate'
+import { LoginForm } from 'types/auth/form'
+import * as yup from 'yup'
+
+const loginStore = useLoginStore()
+const form = reactive<LoginForm>({ email: '', password: '' })
+
+const isLoading = computed(() => useAuthStore().isLoading)
+function onSubmit() {
+  if (isLoading.value) return
+  loginStore.login(form)
+}
+
+const error = computed(() => loginStore.error)
+const schema = {
+  email: yup.string().required().email(),
+  password: yup.string().required().min(8),
+}
+</script>
+
 <template>
   <Form
     class="auth login"
@@ -34,37 +58,3 @@
     <!-- <pre>{{ vv }}</pre> -->
   </Form>
 </template>
-
-<script lang="ts">
-import { defineComponent, reactive, computed } from 'vue'
-import { useLoginStore } from 'store/auth/login'
-import { useAuthStore } from 'store/auth'
-import { Field, Form } from 'vee-validate'
-import { LoginForm } from 'types/auth/form'
-import * as yup from 'yup'
-
-export default defineComponent({
-  components: { Field, Form },
-  setup() {
-    const loginStore = useLoginStore()
-    const form = reactive<LoginForm>({ email: '', password: '' })
-
-    const isLoading = computed(() => useAuthStore().isLoading)
-    function onSubmit() {
-      if (isLoading.value) return
-      loginStore.login(form)
-    }
-
-    return {
-      form,
-      isLoading,
-      error: computed(() => loginStore.error),
-      onSubmit,
-      schema: {
-        email: yup.string().required().email(),
-        password: yup.string().required().min(8),
-      },
-    }
-  },
-})
-</script>

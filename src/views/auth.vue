@@ -1,3 +1,11 @@
+<script setup lang="ts">
+import { ref } from 'vue'
+import Login from '@/auth/login.vue'
+import Register from '@/auth/register.vue'
+
+const showLogin = ref(false)
+</script>
+
 <template>
   <div class="container">
     <template class="auth" v-if="showLogin">
@@ -17,23 +25,3 @@
     </template>
   </div>
 </template>
-
-<script lang="ts">
-import { defineComponent, ref } from 'vue'
-import Login from '@/auth/login.vue'
-import Register from '@/auth/register.vue'
-
-export default defineComponent({
-  name: 'Auth',
-  components: {
-    Login,
-    Register,
-  },
-  setup() {
-    const showLogin = ref(false)
-    return { showLogin }
-  },
-})
-</script>
-
-<style scoped></style>
