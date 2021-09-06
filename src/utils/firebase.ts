@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app'
 import { getAuth } from 'firebase/auth'
-import { collection, getFirestore, doc } from 'firebase/firestore/lite'
+import { collection, getFirestore, doc } from 'firebase/firestore'
 import 'firebase/firestore'
 
 export const firebaseApp = initializeApp({

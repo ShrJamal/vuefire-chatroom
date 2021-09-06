@@ -1,10 +1,10 @@
-import { RegisterForm } from 'types/auth/form'
+import { RegisterForm } from 'types/h/form'
 import { auth, userDoc } from 'utils/firebase'
 import {
   createUserWithEmailAndPassword,
   updateCurrentUser,
 } from 'firebase/auth'
-import { setDoc } from 'firebase/firestore/lite'
+import { setDoc } from 'firebase/firestore'
 import { defineStore } from 'pinia'
 import { useAuthStore } from '.'
 

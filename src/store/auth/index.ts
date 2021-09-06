@@ -1,6 +1,6 @@
 import AuthUser from 'types/auth/user'
 import { userDoc } from 'utils/firebase'
-import { getDoc } from 'firebase/firestore/lite'
+import { getDoc } from 'firebase/firestore'
 import { defineStore } from 'pinia'
 import { auth } from '../../utils/firebase'
 
