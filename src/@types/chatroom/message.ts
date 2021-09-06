@@ -1,4 +1,4 @@
-import { DocumentData, Timestamp } from '@/utils/firebase'
+import { DocumentData, Timestamp } from 'firebase/firestore/lite'
 
 export interface ChatMessage {
   id: string

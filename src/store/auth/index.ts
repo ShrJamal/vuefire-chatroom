@@ -1,5 +1,6 @@
 import AuthUser from '@/@types/auth/user'
-import { db } from '@/utils/firebase'
+import { userDoc } from '@/utils/firebase'
+import { getDoc } from 'firebase/firestore/lite'
 import { defineStore } from 'pinia'
 import { auth } from '../../utils/firebase'
 
@@ -19,16 +20,16 @@ export const useAuthStore = defineStore({
           this.user = null
           throw new Error('User not logged')
         }
-        const userDoc = (await db.doc(`users/${uid}`).get()).data()
-        if (!userDoc) {
+        const data = (await getDoc(userDoc(uid))).data()
+        if (!data) {
           throw new Error('Ooops, Cannot found User')
         }
 
         this.user = {
           uid,
-          username: userDoc.username,
-          email: userDoc.email,
-          photoURl: userDoc.photoURl,
+          username: data.username,
+          email: data.email,
+          photoURl: data.photoURl,
         }
       } catch (e) {
         return `${e}`

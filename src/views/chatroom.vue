@@ -8,7 +8,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent, onUnmounted, ref, computed, onUpdated } from 'vue'
 import NavBar from '@/components/navbar.vue'
 import Message from '@/components/chat/message.vue'
@@ -16,6 +16,7 @@ import ChatInput from '@/components/chat/input.vue'
 import { useChatStore } from '@/store/chat'
 
 export default defineComponent({
+  name: 'ChatRoom',
   components: {
     NavBar,
     Message,
@@ -24,7 +25,7 @@ export default defineComponent({
   setup() {
     const chatContainer = ref()
     onUpdated(
-      () => (chatContainer.value.scrollTop = chatContainer.value.scrollHeight)
+      () => (chatContainer.value.scrollTop = chatContainer.value.scrollHeight),
     )
     onUnmounted(() => unSub())
     const store = useChatStore()

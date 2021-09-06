@@ -1,20 +1,21 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { useAuthStore } from '@/store/auth/index'
 import { pinia } from '../store/index'
+import ChatRoom from '@/views/chatroom.vue'
+
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes: [
     {
       path: '/',
       name: 'Home',
-      component: () =>
-        import(/* webpackChunkName: "Home" */ '../views/chatroom.vue'),
+      component: ChatRoom,
     },
     {
       path: '/auth',
       name: 'Auth',
       component: () =>
-        import(/* webpackChunkName: "Auth" */ '../views/auth.vue'),
+        import(/* webpackChunkName: "Auth" */ '@/views/auth.vue'),
     },
   ],
 })

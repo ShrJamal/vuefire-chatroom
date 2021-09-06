@@ -1,7 +1,9 @@
 import { defineStore } from 'pinia'
-import { chatCol } from '../../utils/firebase'
+import { chatCol, chatDoc } from '../../utils/firebase'
 import { useAuthStore } from '../auth/index'
 import { ChatMessage, chatMsgfromDoc } from '@/@types/chatroom/message'
+import { onSnapshot, orderBy, query } from 'firebase/firestore'
+import { setDoc } from 'firebase/firestore/lite'
 
 export const useChatStore = defineStore({
   id: 'chat',
@@ -13,10 +15,12 @@ export const useChatStore = defineStore({
   },
   actions: {
     chatsStream() {
-      return chatCol.orderBy('createdAt', 'desc').onSnapshot((snap) => {
-        this.chats = snap.docs
-          .map((d) => chatMsgfromDoc(d.data()))
-          .sort((a, b) => (a.createdAt < b.createdAt ? -1 : 1))
+      return onSnapshot(query(chatCol, orderBy('createdAt', 'desc')), {
+        next: (snap) => {
+          this.chats = snap.docs
+            .map((d) => chatMsgfromDoc(d.data()))
+            .sort((a, b) => (a.createdAt < b.createdAt ? -1 : 1))
+        },
       })
     },
     async sendMessage(message: string) {
@@ -31,7 +35,7 @@ export const useChatStore = defineStore({
       this.chats = [msg, ...this.chats]
       message = ''
 
-      chatCol.doc(msg.id).set(msg)
+      setDoc(chatDoc(msg.id), msg)
     },
   },
 })
