@@ -10,10 +10,11 @@
 
 <script lang="ts">
 import { defineComponent, onUnmounted, ref, computed, onUpdated } from 'vue'
-import NavBar from '@/components/navbar.vue'
-import Message from '@/components/chat/message.vue'
-import ChatInput from '@/components/chat/input.vue'
-import { useChatStore } from '@/store/chat'
+import NavBar from '@/navbar.vue'
+import Message from '@/chat/message.vue'
+import ChatInput from '@/chat/input.vue'
+import { useChatStore } from 'store/chat'
+import { ChatMessage } from 'types/chatroom/message'
 
 export default defineComponent({
   name: 'ChatRoom',
@@ -33,7 +34,7 @@ export default defineComponent({
 
     return {
       sendMessage: store.sendMessage,
-      chats: computed(() => store.chats),
+      chats: computed<ChatMessage[]>(() => store.chats),
       chatContainer,
     }
   },

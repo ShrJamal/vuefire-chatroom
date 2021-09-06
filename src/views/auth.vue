@@ -20,8 +20,8 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
-import Login from '@/components/auth/login.vue'
-import Register from '@/components/auth/register.vue'
+import Login from '@/auth/login.vue'
+import Register from '@/auth/register.vue'
 
 export default defineComponent({
   name: 'Auth',

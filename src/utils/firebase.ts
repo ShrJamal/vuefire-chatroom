@@ -4,14 +4,14 @@ import { collection, getFirestore, doc } from 'firebase/firestore/lite'
 import 'firebase/firestore'
 
 export const firebaseApp = initializeApp({
-  apiKey: process.env.FIREBASE_apiKey,
-  authDomain: process.env.FIREBASE_authDomain,
-  databaseURL: process.env.FIREBASE_databaseURL,
-  projectId: process.env.FIREBASE_projectId,
-  storageBucket: process.env.FIREBASE_storageBucket,
-  messagingSenderId: process.env.FIREBASE_messagingSenderId,
-  appId: process.env.FIREBASE_appId,
-  measurementId: process.env.FIREBASE_measurementId,
+  apiKey: import.meta.env.VITE_FIREBASE_apiKey,
+  authDomain: import.meta.env.VITE_FIREBASE_authDomain,
+  databaseURL: import.meta.env.VITE_FIREBASE_databaseURL,
+  projectId: import.meta.env.VITE_FIREBASE_projectId,
+  storageBucket: import.meta.env.VITE_FIREBASE_storageBucket,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_messagingSenderId,
+  appId: import.meta.env.VITE_FIREBASE_appId,
+  measurementId: import.meta.env.VITE_FIREBASE_measurementId,
 })
 
 //--------- Auth -------------------------

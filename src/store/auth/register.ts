@@ -1,5 +1,5 @@
-import { RegisterForm } from '@/@types/auth/form'
-import { auth, userDoc } from '@/utils/firebase'
+import { RegisterForm } from 'types/auth/form'
+import { auth, userDoc } from 'utils/firebase'
 import {
   createUserWithEmailAndPassword,
   updateCurrentUser,

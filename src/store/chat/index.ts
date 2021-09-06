@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { chatCol, chatDoc } from '../../utils/firebase'
 import { useAuthStore } from '../auth/index'
-import { ChatMessage, chatMsgfromDoc } from '@/@types/chatroom/message'
+import { ChatMessage, chatMsgfromDoc } from 'types/chatroom/message'
 import { onSnapshot, orderBy, query } from 'firebase/firestore'
 import { setDoc } from 'firebase/firestore/lite'
 

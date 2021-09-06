@@ -9,13 +9,13 @@
 </template>
 
 <script lang="ts">
-import { useAuthStore } from '@/store/auth'
+import { useAuthStore } from 'store/auth'
 import { defineComponent } from 'vue'
 
 export default defineComponent({
   setup() {
     const authStore = useAuthStore()
-    return { user: authStore.user, logout: authStore.logout }
+    return { user: authStore.user!, logout: authStore.logout }
   },
 })
 </script>

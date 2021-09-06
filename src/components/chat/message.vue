@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts">
-import { ChatMessage } from '@/@types/chatroom/message'
+import { ChatMessage } from 'types/chatroom/message'
 import { defineComponent } from 'vue'
 import { format } from 'timeago.js'
 export default defineComponent({

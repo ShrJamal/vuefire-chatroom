@@ -5,8 +5,8 @@
 
 <script lang="ts">
 import { defineComponent, onUnmounted } from 'vue'
-import { auth } from '@/utils/firebase'
-import { useAuthStore } from '@/store/auth/index'
+import { auth } from 'utils/firebase'
+import { useAuthStore } from 'store/auth/index'
 import { useRouter } from 'vue-router'
 
 export default defineComponent({
