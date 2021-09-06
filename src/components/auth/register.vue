@@ -5,6 +5,7 @@ import { useAuthStore } from 'store/auth'
 import { RegisterForm } from 'types/auth/form'
 import { Field, Form } from 'vee-validate'
 import * as yup from 'yup'
+import { storeToRefs } from 'pinia'
 
 const registerStore = useRegisterStore()
 const form = reactive<RegisterForm>({
@@ -17,7 +18,7 @@ function onSubmit() {
   if (isLoading.value) return
   registerStore.register(form)
 }
-const error = computed(() => registerStore.error)
+const { error } = storeToRefs(registerStore)
 const schema = {
   username: yup.string().required().min(3),
   email: yup.string().required().email(),

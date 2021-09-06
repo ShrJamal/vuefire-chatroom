@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ChatMessage } from 'types/chatroom/message'
-import { defineProps } from 'vue'
 import { format } from 'timeago.js'
 
 const { msg } = defineProps({

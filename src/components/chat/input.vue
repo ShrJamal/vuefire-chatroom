@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import { ref, defineEmits } from 'vue'
+import { ref } from 'vue'
 
-const emit = defineEmits(['send'])
+const emit = defineEmits<{
+  (e: 'send', value: string): void
+}>()
 
 const input = ref('')
-function onSend(e: Event) {
-  e.preventDefault()
+function onSend() {
   emit('send', input.value)
   input.value = ''
 }

@@ -5,6 +5,7 @@ import { useAuthStore } from 'store/auth'
 import { Field, Form } from 'vee-validate'
 import { LoginForm } from 'types/auth/form'
 import * as yup from 'yup'
+import { storeToRefs } from 'pinia'
 
 const loginStore = useLoginStore()
 const form = reactive<LoginForm>({ email: '', password: '' })
@@ -15,7 +16,8 @@ function onSubmit() {
   loginStore.login(form)
 }
 
-const error = computed(() => loginStore.error)
+// const error = computed(() => loginStore.state.error)
+const { error } = storeToRefs(loginStore)
 const schema = {
   email: yup.string().required().email(),
   password: yup.string().required().min(8),

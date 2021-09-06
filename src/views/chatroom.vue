@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { onUnmounted, ref, computed, onUpdated } from 'vue'
+import { onUnmounted, ref, onUpdated } from 'vue'
 import NavBar from '@/navbar.vue'
 import Message from '@/chat/message.vue'
 import ChatInput from '@/chat/input.vue'
 import { useChatStore } from 'store/chat'
-import { ChatMessage } from 'types/chatroom/message'
+import { storeToRefs } from 'pinia'
 
 const chatContainer = ref()
 onUpdated(
@@ -12,15 +12,14 @@ onUpdated(
 )
 onUnmounted(() => unSub())
 const store = useChatStore()
+const { chats } = storeToRefs(store)
 const unSub = store.chatsStream()
-
-const chats = computed<ChatMessage[]>(() => store.chats)
 </script>
 
 <template>
   <NavBar />
   <div class="container">
-    <div class="chat-container" :ref="chatContainer">
+    <div class="chat-container" ref="chatContainer">
       <Message v-for="c in chats" :key="c.id" :msg="c" />
     </div>
     <ChatInput @send="store.sendMessage" />
