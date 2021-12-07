@@ -8,27 +8,27 @@
     "serve": "vite preview"
   },
   "dependencies": {
-    "@vueuse/core": "^6.2.0",
-    "core-js": "^3.17.2",
-    "firebase": "^9.0.1",
-    "pinia": "^2.0.0-rc.8",
+    "@vueuse/core": "^7.1.2",
+    "core-js": "^3.19.3",
+    "firebase": "^9.6.0",
+    "pinia": "^2.0.6",
     "timeago.js": "^4.0.2",
-    "vee-validate": "^4.0.2",
-    "vue": "^3.2.9",
-    "vue-router": "^4.0.11",
-    "yup": "^0.32.9"
+    "vee-validate": "^4.5.6",
+    "vue": "^3.2.24",
+    "vue-router": "^4.0.12",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^4.30.0",
-    "@typescript-eslint/parser": "^4.30.0",
-    "@vitejs/plugin-vue": "^1.6.0",
-    "@vue/compiler-sfc": "^3.2.9",
-    "vite": "^2.5.3",
-    "vue-tsc": "^0.3.0",
-    "eslint": "^7.32.0",
+    "@typescript-eslint/eslint-plugin": "^5.6.0",
+    "@typescript-eslint/parser": "^5.6.0",
+    "@vitejs/plugin-vue": "^1.10.2",
+    "@vue/compiler-sfc": "^3.2.24",
+    "vite": "^2.7.0",
+    "vue-tsc": "^0.29.8",
+    "eslint": "^8.4.1",
     "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-vue": "^7.17.0",
-    "prettier": "^2.3.2",
-    "typescript": "~4.4.2"
+    "eslint-plugin-vue": "^8.2.0",
+    "prettier": "^2.5.1",
+    "typescript": "~4.5.2"
   }
 }
