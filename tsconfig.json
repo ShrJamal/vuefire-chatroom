@@ -1,19 +1,20 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
-    "module": "ESNext",
-    "target": "es2016",
-    "lib": ["DOM", "ESNext"],
-    "strict": true,
-    "esModuleInterop": true,
-    "incremental": false,
-    "skipLibCheck": true,
     "moduleResolution": "node",
+    "module": "ESNext",
+    "lib": ["ESNext"],
+    "target": "ESNext",
+    "importsNotUsedAsValues": "error",
+    "strict": true,
+    "isolatedModules": true,
     "resolveJsonModule": true,
-    "noUnusedLocals": true,
-    "strictNullChecks": true,
+    "sourceMap": true,
+    "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "types": ["vite/client"],
+    "allowJs": true,
+    "checkJs": true,
+    "importHelpers": true,
+    "baseUrl": ".",
     "paths": {
       "~/*": ["src/*"],
       "@/*": ["src/components/*"],
@@ -21,9 +22,16 @@
       "utils/*": ["src/utils/*"],
       "types/*": ["src/@types/*"]
     },
-
+    "types": ["node"]
   },
-
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
-  "exclude": ["dist", "node_modules", ".git"]
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.js",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.jsx",
+    "src/**/*.vue",
+    "vite.config.ts"
+  ],
+  "exclude": ["node_modules/**/*", ".git/**/*"]
 }
