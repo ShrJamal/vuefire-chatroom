@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "vite",
     "build": "tsc && vite build",
+    "dev": "vite",
     "serve": "vite preview"
   },
   "dependencies": {
@@ -19,8 +19,10 @@
     "yup": "^0.32.11"
   },
   "devDependencies": {
+    "@iconify/json": "^1.1.439",
     "@typescript-eslint/eslint-plugin": "^5.6.0",
     "@typescript-eslint/parser": "^5.6.0",
+    "@unocss/preset-icons": "^0.15.5",
     "@vitejs/plugin-vue": "^1.10.2",
     "@vue/compiler-sfc": "^3.2.24",
     "eslint": "^8.4.1",
@@ -29,6 +31,9 @@
     "prettier": "^2.5.1",
     "tslib": "^2.3.1",
     "typescript": "~4.5.2",
+    "unocss": "^0.15.5",
+    "unplugin-auto-import": "^0.5.1",
+    "unplugin-vue-components": "^0.17.6",
     "vite": "^2.7.0",
     "vue-tsc": "^0.29.8"
   }
