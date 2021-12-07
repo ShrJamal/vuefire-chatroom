@@ -1,4 +1,4 @@
-import AuthUser from 'types/auth/user'
+import type AuthUser from 'types/auth/user'
 import { userDoc } from 'utils/firebase'
 import { getDoc } from 'firebase/firestore'
 import { defineStore } from 'pinia'

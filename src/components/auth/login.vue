@@ -3,7 +3,7 @@ import { reactive, computed } from 'vue'
 import { useLoginStore } from 'store/auth/login'
 import { useAuthStore } from 'store/auth'
 import { Field, Form } from 'vee-validate'
-import { LoginForm } from 'types/auth/form'
+import type { LoginForm } from 'types/auth/form'
 import * as yup from 'yup'
 import { storeToRefs } from 'pinia'
 

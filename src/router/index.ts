@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { useAuthStore } from 'store/auth/index'
 import { pinia } from 'store/index'
-import ChatRoom from '~/views/ChatRoom.vue'
-import Auth from '~/views/Auth.vue'
+import ChatRoom from '~/pages/chatroom.vue'
+import Auth from '~/pages/auth.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
