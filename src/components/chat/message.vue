@@ -1,3 +1,11 @@
+<template>
+  <div class="msg">
+    <h6 class="date">{{ format(msg?.createdAt) }}</h6>
+    <span class="username">{{ msg?.username }}: </span>
+    <span class="content">{{ msg?.content }}</span>
+  </div>
+</template>
+
 <script setup lang="ts">
 import type { ChatMessage } from 'types/chatroom/message'
 import { format } from 'timeago.js'
@@ -9,14 +17,6 @@ const { msg } = defineProps({
   },
 })
 </script>
-
-<template>
-  <div class="msg">
-    <h6 class="date">{{ format(msg?.createdAt) }}</h6>
-    <span class="username">{{ msg?.username }}: </span>
-    <span class="content">{{ msg?.content }}</span>
-  </div>
-</template>
 
 <style scoped>
 .msg {

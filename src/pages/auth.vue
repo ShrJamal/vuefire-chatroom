@@ -1,11 +1,3 @@
-<script setup lang="ts">
-import { ref } from 'vue'
-import Login from '@/auth/login.vue'
-import Register from '@/auth/register.vue'
-
-const showLogin = ref(false)
-</script>
-
 <template>
   <div class="container">
     <template class="auth" v-if="showLogin">
@@ -25,3 +17,11 @@ const showLogin = ref(false)
     </template>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from 'vue'
+import Login from '@/auth/login.vue'
+import Register from '@/auth/register.vue'
+
+const showLogin = ref(false)
+</script>

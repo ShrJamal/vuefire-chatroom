@@ -1,3 +1,13 @@
+<template>
+  <NavBar />
+  <div class="container">
+    <div class="chat-container" ref="chatContainer">
+      <Message v-for="c in chats" :key="c.id" :msg="c" />
+    </div>
+    <ChatInput @send="store.sendMessage" />
+  </div>
+</template>
+
 <script setup lang="ts">
 import { onUnmounted, ref, onUpdated } from 'vue'
 import NavBar from '@/navbar.vue'
@@ -15,16 +25,6 @@ const store = useChatStore()
 const { chats } = storeToRefs(store)
 const unSub = store.chatsStream()
 </script>
-
-<template>
-  <NavBar />
-  <div class="container">
-    <div class="chat-container" ref="chatContainer">
-      <Message v-for="c in chats" :key="c.id" :msg="c" />
-    </div>
-    <ChatInput @send="store.sendMessage" />
-  </div>
-</template>
 
 <style scoped>
 .container {

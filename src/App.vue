@@ -1,3 +1,8 @@
+<template>
+  <h1 v-show="!store.authInit">Loading...</h1>
+  <router-view v-show="store.authInit" />
+</template>
+
 <script setup lang="ts">
 import { onUnmounted } from 'vue'
 import { auth } from 'utils/firebase'
@@ -15,8 +20,3 @@ const unSubscribe = auth.onAuthStateChanged(async () => {
 })
 onUnmounted(() => unSubscribe())
 </script>
-
-<template>
-  <h1 v-show="!store.authInit">Loading...</h1>
-  <router-view v-show="store.authInit" />
-</template>

@@ -1,3 +1,16 @@
+<template>
+  <form @keypress.enter.prevent="onSend">
+    <textarea
+      v-model="input"
+      @submit="onSend"
+      name="value"
+      placeholder="Type Message..."
+      rows="2"
+    />
+    <button @click.prevent="onSend">Send</button>
+  </form>
+</template>
+
 <script setup lang="ts">
 import { ref } from 'vue'
 
@@ -11,19 +24,6 @@ function onSend() {
   input.value = ''
 }
 </script>
-
-<template>
-  <form @keypress.enter.prevent="onSend">
-    <textarea
-      v-model="input"
-      @submit="onSend"
-      name="value"
-      placeholder="Type Message..."
-      rows="2"
-    />
-    <button @click.prevent="onSend">Send</button>
-  </form>
-</template>
 
 <style scoped>
 form {
